@@ -1,0 +1,59 @@
+{
+    "assetsUrlPrefix": "/assets",
+    "extensionsUrlPrefix": "/extensions",
+    "subscriptionsUrlPrefix": "/subscriptions",
+    "tenantConfigs": "/_system/config/store/configs/store.json",
+    "socialCommentsEnable": true,
+    "cached": false,
+    "rxt": {
+        "CONFIG_BASE_PATH": "/_system/config/store/configs/",
+        "EXTENSION_PATH": "extensions/assets/",
+        "ASSET_SCRIPT_PATH": "/asset.js",
+        "DEFAULT_ASSET_SCRIPT": "/extensions/assets/default/asset.js"
+    },
+    "server": {
+        "https": "%https.host%",
+        "http": "%http.host%",
+        "context" : "/store",
+        "proxyServer" : ""
+    },
+    "lifeCycleBehaviour": {
+        "visibleIn": ["Published"]
+    },
+    "socialAppConnectionInfo": {
+        "script": "%https.host%/social/export-js/social.js",
+        "scriptType": "text/javascript",
+        "socialAppUrl": "../../../social/"
+    },
+    "authentication": {
+        "activeMethod": "basic",
+        "methods": {
+            "sso": {
+                "attributes": {
+                    "issuer": "store",
+                    "identityProviderURL": "<%= @identity_provider['store']['identity_provider_url'] %>",
+                    "responseSigningEnabled": true,
+                    "acs": "%https.host%/store/acs",
+                    "identityAlias": "wso2carbon",
+                    "defaultNameIDPolicy": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+                    "useTenantKey": false,
+                    "isPassive":false
+
+                }
+            },
+            "basic": {
+                "attributes": {
+                                "loginURL":"%https.host%/%context%/pages/basic-auth-login"
+                              }
+            }
+        }
+    },
+    "search": {
+        "defaultSearchTemplate":"name=*$input*&content=*$input*"
+    },
+    "metrics":{
+        "enabled":false,
+        "enableTraceLogs":false
+    },
+    "version": "5.2.0"
+}
